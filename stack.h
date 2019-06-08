@@ -7,12 +7,19 @@
 
 #include <iostream>
 #include <queue>
+#include "symbol.hh"
 
-class stack {
+class Stack {
 private:
-    std::deque<std::string> queue;
+    std::string _str;
+    std::deque<std::string> _queue;
+    TableSymbol _table;
+
+    void split(std::string str);
 public:
-    void loop(std::string str);
+    Stack(std::string str);
+
+    bool loop();
 };
 
 

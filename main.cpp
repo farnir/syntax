@@ -2,6 +2,7 @@
 #include <istream>
 #include <fstream>
 #include <algorithm>
+#include "stack.h"
 // Main function to verify the number of argument and instantiate our main class.
 // It also catch all our exceptions from the code.
 
@@ -41,12 +42,12 @@ std::string tokenFormatting(std::string file)
        for (int i = 0; i < len;++i)
        {
            line = str.substr(0, str.find('\n'));
-           tmp = line.substr(0, line.find('|'));
+           tmp = line.substr(0, line.find('\t'));
            final.append(tmp + '\n');
            size_t pos = str.find('\n');
            str.erase(0, pos + 1);
        }
-       std::cout << final << std::endl;
+       final += "$\n";
     return (final);
 }
 
@@ -56,8 +57,10 @@ int main(int ac, char** av) {
     return (1);
   }
   try {
-    tokenFormatting(av[1]);
-    return (0);
+      Stack s(tokenFormatting(av[1]));
+      if (s.loop())
+        return (0);
+      return (1);
   } catch (std::string const & e) {
     std::cout << e << std::endl;
     return (1);
