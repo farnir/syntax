@@ -1,0 +1,8 @@
+lbrace	|	{
+vtype	|	char
+id	|	a
+semi	|	;
+return	|	return
+id	|	a
+semi	|	;
+rbrace	|	}
