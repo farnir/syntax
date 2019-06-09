@@ -69,5 +69,5 @@ std::string TableSymbol::find(std::string index, std::string input) {
     if (tmp->index == index && tmp->input == input)
       return tmp->result;
   }
-  return "";
+  return "error";
 }

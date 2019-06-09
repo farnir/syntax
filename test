@@ -6,8 +6,7 @@ lbrace	|	{
 vtype	|	int
 id	|	a
 semi	|	;
+return	|	return
 id	|	a
-assign	|	=
-num	|	3
 semi	|	;
 rbrace	|	}

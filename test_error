@@ -9,4 +9,5 @@ semi	|	;
 id	|	a
 assign	|	=
 num	|	12
+semi	|	;
 rbrace	|	}

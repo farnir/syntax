@@ -25,38 +25,47 @@ void Stack::split(std::string str)
 
 bool Stack::loop()
 {
-    std::string line;
-    std::istringstream is(_str);
-    std::getline(is, line, '\n');
-    int i = 1;
-    while (!_queue.empty()) // Doing the process all over until the queue is empty - only way to have a valid input file
+  std::string line;
+  std::istringstream is(_str);
+  std::getline(is, line, '\n');
+  int i = 1;
+  while (!_queue.empty()) // Doing the process all over until the queue is empty - only way to have a valid input file
     {
 
-        // First step is removing the top element of the stack
-        std::string front = _queue.front();
-        //std::cout << "FRONT = " << front << std::endl;
-        //std::cout << "LINE = " << line << std::endl;
-        _queue.pop_front();
+      // First step is removing the top element of the stack
+      std::string front = _queue.front();
+      //std::cout << "FRONT = " << front << std::endl;
+      //std::cout << "LINE = " << line << std::endl;
+      _queue.pop_front();
 
-        if (isupper(front[0]) != 0) // Checks if we have a non-terminal or terminal
-        {
-            std::string token = _table.find(front, line); // Searching the symbol in the table
-            if (token != "" && token != "e") // Checking if token is not empty nor an espilon, represented as "e"
-                split(token); // Splitting the tokens into individual keywords to push into the queue
+      if (isupper(front[0]) != 0) // Checks if we have a non-terminal or terminal
+	{
+	  std::string token = _table.find(front, line); // Searching the symbol in the table
+	  if (token != "error" && token != "e") // Checking if token is not empty nor an espilon, represented as "e"
+	    split(token); // Splitting the tokens into individual keywords to push into the queue
+	  else if (token != "e")
+	    {
+	      std::cout << "Symbol Table doesn't recognize this pattern at line " << i << std::endl;
+	      std::cout << "Expected: " << front << std::endl;
+	      std::cout << "Got: " << line << std::endl;
+	      return (false);
+	    }
         }
-        else
+      else
         {
-            if (front != line) // if our top element of the stack doesn't match what is on the line, the file is not valid
+	  if (front != line) // if our top element of the stack doesn't match what is on the line, the file is not valid
             {
-                std::cout << "Incorrect syntax at line " << i << std::endl;
-                return (false);
+	      std::cout << "Terminal not recognized at line " << i << std::endl;
+	      std::cout << "Expected: " << front << std::endl;
+	      std::cout << "Got: " << line << std::endl;
+	      return (false);
             }
-            std::getline(is, line, '\n'); // Carrying on the process for the next line in the input file
-            ++i;
+	  std::getline(is, line, '\n'); // Carrying on the process for the next line in the input file
+	  ++i;
         }
     }
-    std::cout << "Input file is valid" << std::endl;
-    return (true); // We return true if we get out of the loop, meaning the stack is empty and the file valid
+  std::cout << "Input file is valid" << std::endl;
+  return (true); // We return true if we get out of the loop, meaning the stack is empty and the file valid
 }
 
 Stack::Stack(std::string str) : _str(str){
