@@ -8,6 +8,5 @@ id	|	a
 semi	|	;
 id	|	a
 assign	|	=
-num	|	3
-semi	|	;
+num	|	12
 rbrace	|	}

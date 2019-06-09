@@ -18,7 +18,7 @@ std::string change(std::string str, std::string toFind, std::string toReplace)
 std::string tokenFormatting(std::string file)
 {
     std::ifstream is;
-       is.open("test");
+       is.open(file);
        std::string str;
        if (is) {
            // get length of file:

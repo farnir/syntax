@@ -34,6 +34,8 @@ bool Stack::loop()
 
         // First step is removing the top element of the stack
         std::string front = _queue.front();
+        //std::cout << "FRONT = " << front << std::endl;
+        //std::cout << "LINE = " << line << std::endl;
         _queue.pop_front();
 
         if (isupper(front[0]) != 0) // Checks if we have a non-terminal or terminal
@@ -53,6 +55,7 @@ bool Stack::loop()
             ++i;
         }
     }
+    std::cout << "Input file is valid" << std::endl;
     return (true); // We return true if we get out of the loop, meaning the stack is empty and the file valid
 }
 
