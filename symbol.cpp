@@ -14,8 +14,8 @@ void TableSymbol::init() {
   table.push_back(std::make_unique<Symbol>("ARG", "vtype", "vtype id MOREARGS"));
   table.push_back(std::make_unique<Symbol>("ARG", "rparen", "e"));
 
-  table.push_back(std::make_unique<Symbol>("MOREARG", "rparen", "e"));
-  table.push_back(std::make_unique<Symbol>("MOREARG", "comma", "comma vtype id MOREARGS"));
+  table.push_back(std::make_unique<Symbol>("MOREARGS", "rparen", "e"));
+  table.push_back(std::make_unique<Symbol>("MOREARGS", "comma", "comma vtype id MOREARGS"));
 
   table.push_back(std::make_unique<Symbol>("BLOCK", "vtype", "STMT BLOCK"));
   table.push_back(std::make_unique<Symbol>("BLOCK", "id", "STMT BLOCK"));
