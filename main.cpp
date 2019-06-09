@@ -2,7 +2,7 @@
 #include <istream>
 #include <fstream>
 #include <algorithm>
-#include "stack.h"
+#include "stack.hh"
 // Main function to verify the number of argument and instantiate our main class.
 // It also catch all our exceptions from the code.
 
@@ -28,26 +28,25 @@ std::string tokenFormatting(std::string file)
 
            char * buffer = new char [length];
 
-           // read data as a block:
+           // read data as a block and clean opened file and useless buffer:
            is.read(buffer,length);
            str = buffer;
            delete[] buffer;
-           //std::cout << str << std::endl;
            is.close();
        }
        std::string tmp;
        std::string line;
        std::string final;
        int len = std::count(str.begin(), str.end(), '\n');
-       for (int i = 0; i < len;++i)
+       for (int i = 0; i < len;++i) // iterating over the number of line
        {
-           line = str.substr(0, str.find('\n'));
-           tmp = line.substr(0, line.find('\t'));
+           line = str.substr(0, str.find('\n')); // splitting into line
+           tmp = line.substr(0, line.find('\t')); // removing tab from our previous program output
            final.append(tmp + '\n');
            size_t pos = str.find('\n');
-           str.erase(0, pos + 1);
+           str.erase(0, pos + 1); // erasing all the useless part after our keyboard
        }
-       final += "$\n";
+       final += "$\n"; // adding the endmarker at the end of the file
     return (final);
 }
 

@@ -63,11 +63,11 @@ void TableSymbol::init() {
 
   table.push_back(std::make_unique<Symbol>("RETURN", "return", "return FACTOR semi"));
 }
-
+// Iterating over the table to find the matching token - returning empty string otherwise
 std::string TableSymbol::find(std::string index, std::string input) {
   for (auto &tmp : table) {
     if (tmp->index == index && tmp->input == input)
       return tmp->result;
-  };
+  }
   return "";
 }

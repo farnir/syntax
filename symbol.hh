@@ -7,9 +7,9 @@
 
 // Structure that represent one case in the symbol table.
 struct Symbol {
-  std::string index;
-  std::string input;
-  std::string result;
+  std::string index; // Terminal
+  std::string input; // Non-terminal
+  std::string result; // different token possibilities
 
   Symbol(std::string _index, std::string _input, std::string _result) {
     index = _index;
@@ -26,7 +26,7 @@ public:
   TableSymbol();
   ~TableSymbol() = default;
 
-  std::string find(std::string index, std::string input);
+  std::string find(std::string index, std::string input); // Function used to get the possible tokens
 private:
   void init();
 };
