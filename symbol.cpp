@@ -51,7 +51,7 @@ void TableSymbol::init() {
   table.push_back(std::make_unique<Symbol>("TERM2", "semi", "e"));
   table.push_back(std::make_unique<Symbol>("TERM2", "rparen", "e"));
   table.push_back(std::make_unique<Symbol>("TERM2", "addsub", "e"));
-  table.push_back(std::make_unique<Symbol>("TERM2", "num", "multidiv TERM"));
+  table.push_back(std::make_unique<Symbol>("TERM2", "multidiv", "multidiv TERM"));
 
   table.push_back(std::make_unique<Symbol>("FACTOR", "id", "id"));
   table.push_back(std::make_unique<Symbol>("FACTOR", "lparen", "lparen EXPR rparen"));
